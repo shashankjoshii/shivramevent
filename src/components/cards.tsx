@@ -26,7 +26,7 @@ export function ServiceCard({
   linkLabel = "View Details",
 }: ServiceCardProps) {
   return (
-    <article className="group relative z-[1] overflow-hidden rounded-lg border border-ink-border bg-ink-card px-6 py-10 text-center transition-[transform,border-color,box-shadow] duration-[450ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2.5 hover:scale-[1.03] hover:border-gold hover:shadow-[0_20px_40px_rgba(0,0,0,0.7),0_0_30px_rgba(197,160,89,0.28)] before:absolute before:inset-x-0 before:top-0 before:h-[3px] before:scale-x-0 before:bg-[linear-gradient(90deg,transparent,var(--color-gold),transparent)] before:transition-transform before:duration-[450ms] before:ease-[cubic-bezier(0.16,1,0.3,1)] before:content-[''] hover:before:scale-x-100">
+    <article className="group relative z-[1] overflow-hidden rounded-lg border border-ink-border bg-ink-card px-5 py-8 text-center sm:px-6 sm:py-10 transition-[transform,border-color,box-shadow] duration-[450ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2.5 hover:scale-[1.03] hover:border-gold hover:shadow-[0_20px_40px_rgba(0,0,0,0.7),0_0_30px_rgba(197,160,89,0.28)] before:absolute before:inset-x-0 before:top-0 before:h-[3px] before:scale-x-0 before:bg-[linear-gradient(90deg,transparent,var(--color-gold),transparent)] before:transition-transform before:duration-[450ms] before:ease-[cubic-bezier(0.16,1,0.3,1)] before:content-[''] hover:before:scale-x-100">
       {number ? (
         <div className="mb-2 font-heading text-[2.5rem] text-gold-dark opacity-60 transition-all duration-[400ms] group-hover:scale-110 group-hover:text-gold-light group-hover:opacity-100">
           {number}
@@ -47,7 +47,7 @@ export function ServiceCard({
       {href ? (
         <Link
           href={href}
-          className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-gold transition-colors hover:text-gold-light"
+          className="mt-2 inline-flex min-h-11 items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-gold transition-colors hover:text-gold-light"
         >
           {linkLabel}
           <span aria-hidden className="transition-transform group-hover:translate-x-1">
@@ -84,7 +84,7 @@ export function EventCard({
 }: EventCardProps) {
   return (
     <article className="group relative overflow-hidden rounded-lg border border-ink-border bg-ink-card transition-[transform,border-color,box-shadow] duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:scale-[1.02] hover:border-gold hover:shadow-[0_16px_36px_rgba(0,0,0,0.6),0_0_25px_rgba(197,160,89,0.25)]">
-      <div className="relative h-[220px] overflow-hidden">
+      <div className="relative h-[190px] overflow-hidden sm:h-[220px]">
         <Image
           src={image}
           alt={alt}
@@ -95,7 +95,7 @@ export function EventCard({
         />
       </div>
 
-      <div className="p-6">
+      <div className="p-5 sm:p-6">
         <h3 className="mb-3 font-heading text-xl font-semibold text-gold-light transition-colors duration-300 group-hover:text-gold">
           {title}
         </h3>
@@ -104,7 +104,7 @@ export function EventCard({
         {href ? (
           <Link
             href={href}
-            className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-gold transition-colors hover:text-gold-light"
+            className="mt-2 inline-flex min-h-11 items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-gold transition-colors hover:text-gold-light"
           >
             {linkLabel}
             <span
@@ -138,7 +138,7 @@ export function TestimonialCard({
   initial,
 }: TestimonialCardProps) {
   return (
-    <figure className="relative h-full rounded-lg border border-ink-border bg-ink-card p-8 transition-[transform,border-color,box-shadow] duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:border-gold-dark hover:shadow-[0_14px_32px_rgba(0,0,0,0.5)] before:absolute before:left-6 before:top-4 before:font-heading before:text-[4rem] before:leading-none before:text-gold-dark before:opacity-30 before:content-['\201C']">
+    <figure className="relative h-full rounded-lg border border-ink-border bg-ink-card p-6 sm:p-8 transition-[transform,border-color,box-shadow] duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:border-gold-dark hover:shadow-[0_14px_32px_rgba(0,0,0,0.5)] before:absolute before:left-6 before:top-4 before:font-heading before:text-[4rem] before:leading-none before:text-gold-dark before:opacity-30 before:content-['\201C']">
       <div className="mb-3 tracking-[2px] text-gold" aria-label="5 out of 5 stars">
         ★★★★★
       </div>
@@ -162,7 +162,7 @@ export function TestimonialCard({
 
 export function CardGrid({ children }: { children: ReactNode }) {
   return (
-    <div className="grid gap-6 [grid-template-columns:repeat(auto-fit,minmax(280px,1fr))]">
+    <div className="grid-fit-280 grid gap-6">
       {children}
     </div>
   );
@@ -179,7 +179,7 @@ export function Section({
 }) {
   return (
     <section
-      className={`py-20 max-[480px]:py-14 ${alt ? "bg-ink-soft" : ""} ${className}`.trim()}
+      className={`py-14 sm:py-20 ${alt ? "bg-ink-soft" : ""} ${className}`.trim()}
     >
       <div className="shell">{children}</div>
     </section>

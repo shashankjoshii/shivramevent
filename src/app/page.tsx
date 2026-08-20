@@ -19,7 +19,7 @@ export default function HomePage() {
     <>
       {/* Hero — the agency's own black-and-gold balloon wall sits behind the
           same dark diagonal wash the legacy build used. */}
-      <section className="relative flex min-h-[calc(100vh-var(--spacing-header)-40px)] items-center overflow-hidden py-20">
+      <section className="relative flex min-h-[calc(100dvh-var(--spacing-header))] items-center overflow-hidden py-16 sm:py-20">
         <Image
           src="/images/black-gold-40.jpg"
           alt=""
@@ -32,32 +32,32 @@ export default function HomePage() {
 
         <div className="shell relative z-[1]">
           <Reveal className="max-w-[720px]">
-            <p className="mb-4 text-[0.8125rem] uppercase tracking-[0.3em] text-gold">
+            <p className="mb-4 text-xs uppercase tracking-[0.18em] text-gold sm:text-[0.8125rem] sm:tracking-[0.3em]">
               {site.city}&apos;s Trusted Event Planners
             </p>
             <h1 className="mb-5 font-heading text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[1.2] text-cream">
               Creating <span className="text-gold">Unforgettable</span>{" "}
               Celebrations
             </h1>
-            <p className="mb-8 max-w-[560px] text-[1.0625rem] text-muted">
+            <p className="mb-8 max-w-[560px] text-base text-muted sm:text-[1.0625rem]">
               Shiv Ram Event is a professional event management company in{" "}
               {site.city}, offering complete event planning and decoration
               services — from weddings and corporate events to themed birthday
               parties and baby showers.
             </p>
-            <div className="flex flex-wrap gap-4 max-[480px]:flex-col">
+            <div className="flex flex-col gap-3 min-[420px]:flex-row min-[420px]:flex-wrap min-[420px]:gap-4">
               <Button href="/contact">Book an Event</Button>
               <Button href="/services" variant="outline">
                 Our Services
               </Button>
             </div>
-            <Stats items={heroStats} className="mt-12" />
+            <Stats items={heroStats} className="mt-10 sm:mt-12" />
           </Reveal>
         </div>
       </section>
 
       {/* Services overview */}
-      <section className="py-20 max-[480px]:py-14">
+      <section className="py-14 sm:py-20">
         <div className="shell">
           <SectionHeader
             label="What We Do"
@@ -85,7 +85,7 @@ export default function HomePage() {
       </section>
 
       {/* Featured work */}
-      <section className="bg-ink-soft py-20 max-[480px]:py-14">
+      <section className="bg-ink-soft py-14 sm:py-20">
         <div className="shell">
           <SectionHeader
             label="Our Work"
@@ -109,7 +109,7 @@ export default function HomePage() {
       </section>
 
       {/* About preview */}
-      <section className="py-20 max-[480px]:py-14">
+      <section className="py-14 sm:py-20">
         <div className="shell grid items-center gap-12 lg:grid-cols-2">
           <Reveal direction="left">
             <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-ink-border">
@@ -146,11 +146,11 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="bg-ink-soft py-20 max-[480px]:py-14">
+      <section className="bg-ink-soft py-14 sm:py-20">
         <div className="shell">
           <SectionHeader label="Client Love" title="What Our Clients Say" />
 
-          <div className="grid gap-6 [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))]">
+          <div className="grid-fit-300 grid gap-6">
             {testimonials.map((testimonial, index) => (
               <Reveal key={testimonial.name} delay={index * 110}>
                 <TestimonialCard {...testimonial} />

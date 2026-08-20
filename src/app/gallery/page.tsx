@@ -21,7 +21,7 @@ export default function GalleryPage() {
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Gallery" }]}
       />
 
-      <section className="py-20 max-[480px]:py-14">
+      <section className="py-14 sm:py-20">
         <div className="shell">
           <SectionHeader
             label="Our Portfolio"
@@ -37,7 +37,7 @@ export default function GalleryPage() {
               href={site.instagramUrl}
               target="_blank"
               rel="noopener"
-              className="text-gold transition-colors hover:text-gold-light"
+              className="inline-flex min-h-10 items-center text-gold transition-colors hover:text-gold-light sm:min-h-0"
             >
               Instagram
             </a>{" "}

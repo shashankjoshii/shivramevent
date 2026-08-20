@@ -20,12 +20,12 @@ function FooterColumn({
       <h4 className="mb-5 font-heading text-base font-semibold text-gold-light">
         {heading}
       </h4>
-      <ul className="space-y-2.5">
+      <ul className="space-y-0.5 sm:space-y-2.5">
         {links.map((link) => (
           <li key={link.href}>
             <Link
               href={link.href}
-              className="text-[0.9375rem] text-muted transition-colors hover:text-gold"
+              className="inline-flex min-h-10 items-center text-[0.9375rem] text-muted transition-colors hover:text-gold sm:min-h-0"
             >
               {link.label}
             </Link>
@@ -39,7 +39,7 @@ function FooterColumn({
 export function Footer() {
   return (
     <footer className="border-t border-ink-border bg-ink-soft">
-      <div className="shell grid gap-8 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] lg:gap-10">
+      <div className="shell grid gap-10 py-12 sm:gap-8 sm:py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] lg:gap-10">
         <div>
           <Image
             src="/logo/logo-256.png"
@@ -75,12 +75,12 @@ export function Footer() {
           <h4 className="mb-5 font-heading text-base font-semibold text-gold-light">
             Contact Us
           </h4>
-          <ul className="space-y-2.5 text-[0.9375rem] text-muted">
+          <ul className="space-y-2 text-[0.9375rem] text-muted sm:space-y-2.5">
             <li>
               ☎{" "}
               <a
                 href={site.phoneHref}
-                className="transition-colors hover:text-gold"
+                className="inline-flex min-h-10 items-center transition-colors hover:text-gold sm:min-h-0"
               >
                 {site.phoneDisplay}
               </a>
@@ -89,7 +89,7 @@ export function Footer() {
               ✉{" "}
               <a
                 href={site.emailHref}
-                className="break-all transition-colors hover:text-gold"
+                className="inline-flex min-h-10 items-center break-all transition-colors hover:text-gold sm:min-h-0"
               >
                 {site.email}
               </a>

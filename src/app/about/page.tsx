@@ -41,7 +41,7 @@ export default function AboutPage() {
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "About Us" }]}
       />
 
-      <section className="py-20 max-[480px]:py-14">
+      <section className="py-14 sm:py-20">
         <div className="shell grid items-center gap-12 lg:grid-cols-2">
           <Reveal direction="left">
             <span className="mb-3 inline-block text-xs uppercase tracking-[0.25em] text-gold">
@@ -86,14 +86,14 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-ink-soft py-20 max-[480px]:py-14">
+      <section className="bg-ink-soft py-14 sm:py-20">
         <div className="shell">
           <SectionHeader label="Our Purpose" title="Mission & Vision" />
 
           <div className="grid gap-6 lg:grid-cols-2">
             {missionVision.map((item, index) => (
               <Reveal key={item.title} delay={index * 120}>
-                <div className="h-full rounded-lg border border-ink-border bg-ink-card p-8 transition-colors duration-300 hover:border-gold-dark">
+                <div className="h-full rounded-lg border border-ink-border bg-ink-card p-6 transition-colors duration-300 hover:border-gold-dark sm:p-8">
                   <h3 className="mb-3 font-heading text-xl font-semibold text-gold-light">
                     {item.title}
                   </h3>
@@ -107,13 +107,13 @@ export default function AboutPage() {
             <Stats
               items={aboutStats}
               bordered={false}
-              className="justify-around gap-8 rounded-lg border border-ink-border bg-ink-card p-8 text-center sm:gap-12"
+              className="justify-around gap-x-5 gap-y-6 rounded-lg border border-ink-border bg-ink-card p-6 text-center sm:gap-12 sm:p-8"
             />
           </Reveal>
         </div>
       </section>
 
-      <section className="py-20 max-[480px]:py-14">
+      <section className="py-14 sm:py-20">
         <div className="shell">
           <SectionHeader
             label="The People Behind"
@@ -121,10 +121,10 @@ export default function AboutPage() {
             description="Our experienced team is dedicated to making every event a masterpiece."
           />
 
-          <div className="grid gap-6 [grid-template-columns:repeat(auto-fit,minmax(240px,1fr))]">
+          <div className="grid-fit-240 grid gap-6">
             {team.map((member, index) => (
               <Reveal key={member.name} delay={index * 110}>
-                <div className="group h-full rounded-lg border border-ink-border bg-ink-card p-8 text-center transition-[transform,border-color,box-shadow] duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:border-gold hover:shadow-[0_16px_36px_rgba(0,0,0,0.6)]">
+                <div className="group h-full rounded-lg border border-ink-border bg-ink-card p-6 text-center sm:p-8 transition-[transform,border-color,box-shadow] duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:border-gold hover:shadow-[0_16px_36px_rgba(0,0,0,0.6)]">
                   <div className="mx-auto mb-4 flex size-20 items-center justify-center rounded-full border border-gold-dark bg-[rgba(197,160,89,0.08)] font-heading text-xl font-semibold text-gold transition-transform duration-[400ms] group-hover:scale-110">
                     {member.initials}
                   </div>

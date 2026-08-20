@@ -22,7 +22,7 @@ export default function ServicesPage() {
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}
       />
 
-      <section className="py-20 max-[480px]:py-14">
+      <section className="py-14 sm:py-20">
         <div className="shell">
           <SectionHeader
             label="What We Offer"
@@ -46,7 +46,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="bg-ink-soft py-20 max-[480px]:py-14">
+      <section className="bg-ink-soft py-14 sm:py-20">
         <div className="shell">
           <SectionHeader
             label="Also Available"

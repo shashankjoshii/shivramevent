@@ -25,6 +25,19 @@
   --spacing-header: 90px;
 }
 
+/* The header is a lot of vertical real estate on a phone. Shrink the token
+   rather than the `h-header` usages, so the hero's min-height calc and the
+   nav sheet's offset stay correct at every width. */
+:root {
+  --spacing-header: 68px;
+}
+
+@media (width >= 40rem) {
+  :root {
+    --spacing-header: 90px;
+  }
+}
+
 /* ==========================================================================
    Base
    ========================================================================== */
@@ -40,6 +53,17 @@
     line-height: 1.7;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+  }
+
+  /* iOS Safari zooms the page when a focused control's text is under 16px.
+     Every field on the site is 15px by design, so restore 16px on touch
+     devices only, where the zoom (not the type scale) is the problem. */
+  @media (pointer: coarse) {
+    input,
+    select,
+    textarea {
+      font-size: 16px;
+    }
   }
 
   ::selection {
@@ -88,6 +112,25 @@
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+}
+
+/*
+ * Auto-fit card grids. The bare `minmax(280px, 1fr)` these replace forces a
+ * 280px track even when the container is narrower, which pushed the layout
+ * past the viewport on 320px phones. Wrapping the floor in `min(_, 100%)`
+ * lets the track collapse to the container instead.
+ */
+@utility grid-fit-240 {
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+}
+@utility grid-fit-260 {
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+}
+@utility grid-fit-280 {
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+}
+@utility grid-fit-300 {
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
 }
 
 /* The thin gold divider under section titles */

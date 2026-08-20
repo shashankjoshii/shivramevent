@@ -59,13 +59,13 @@ export default function ContactPage() {
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact Us" }]}
       />
 
-      <section className="py-20 max-[480px]:py-14">
-        <div className="shell grid gap-12 lg:grid-cols-2">
+      <section className="py-14 sm:py-20">
+        <div className="shell grid gap-10 sm:gap-12 lg:grid-cols-2">
           <Reveal direction="left">
             <span className="mb-3 inline-block text-xs uppercase tracking-[0.25em] text-gold">
               Get In Touch
             </span>
-            <h2 className="mb-4 font-heading text-[1.75rem] font-semibold text-cream">
+            <h2 className="mb-4 font-heading text-2xl font-semibold text-cream sm:text-[1.75rem]">
               We&apos;d Love to Hear From You
             </h2>
             <p className="mb-8 text-muted">
@@ -95,7 +95,7 @@ export default function ContactPage() {
                             {...("external" in line && line.external
                               ? { target: "_blank", rel: "noopener" }
                               : {})}
-                            className="transition-colors hover:text-gold"
+                            className="inline-flex min-h-10 items-center transition-colors hover:text-gold sm:min-h-0"
                           >
                             {line.text}
                           </a>
@@ -117,7 +117,7 @@ export default function ContactPage() {
 
         <div className="shell mt-12">
           <Reveal>
-            <div className="h-[400px] overflow-hidden rounded-lg border border-ink-border">
+            <div className="h-[300px] overflow-hidden rounded-lg border border-ink-border sm:h-[400px]">
               <iframe
                 src={site.mapsEmbedUrl}
                 title={`${site.name} location — ${site.city}`}

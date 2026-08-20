@@ -46,9 +46,9 @@ export default async function ServiceDetailPage({ params }: Params) {
         ]}
       />
 
-      <section className="py-20 max-[480px]:py-14">
+      <section className="py-14 sm:py-20">
         <div className="shell">
-          <div className="mb-12 grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="mb-12 grid items-center gap-8 sm:gap-12 lg:grid-cols-[1.1fr_0.9fr]">
             <Reveal direction="left">
               <span className="mb-3 inline-block text-xs uppercase tracking-[0.25em] text-gold">
                 {service.label}
@@ -67,7 +67,7 @@ export default async function ServiceDetailPage({ params }: Params) {
             </Reveal>
 
             <Reveal direction="right">
-              <div className="relative h-[360px] overflow-hidden rounded-lg border border-ink-border">
+              <div className="relative h-[240px] overflow-hidden rounded-lg border border-ink-border sm:h-[360px]">
                 <Image
                   src={service.image}
                   alt={service.imageAlt}
@@ -79,7 +79,7 @@ export default async function ServiceDetailPage({ params }: Params) {
             </Reveal>
           </div>
 
-          <ul className="grid gap-4 [grid-template-columns:repeat(auto-fit,minmax(240px,1fr))]">
+          <ul className="grid-fit-240 grid gap-4">
             {service.features.map((feature, index) => (
               <Reveal
                 as="li"

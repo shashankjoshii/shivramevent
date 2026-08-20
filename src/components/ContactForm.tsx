@@ -37,7 +37,7 @@ export function ContactForm() {
   }
 
   return (
-    <div className="rounded-lg border border-ink-border bg-ink-card p-8">
+    <div className="rounded-lg border border-ink-border bg-ink-card p-6 sm:p-8">
       <h3 className="mb-6 font-heading text-xl font-semibold text-gold-light">
         Send an Inquiry
       </h3>
@@ -107,7 +107,7 @@ export function ContactForm() {
           />
         </div>
 
-        <Button type="submit" className="w-full">
+        <Button type="submit" className="min-h-12 w-full">
           Send via WhatsApp
         </Button>
 

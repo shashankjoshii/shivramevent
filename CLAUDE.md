@@ -46,7 +46,9 @@ Tailwind v4, configured CSS-first in `src/app/globals.css` — there is no `tail
 
 Use the tokens (`text-gold`, `bg-ink-card`, `border-ink-border`) — never raw hex.
 
-Three custom utilities are defined with `@utility`: **`shell`** is the page container (`width: min(1140px, 92%)`, centred — the legacy `.container`), **`rule-gold`** is the thin gold divider under section titles, and **`text-gradient-gold`** is gold gradient text. Section vertical rhythm is `py-20 max-[480px]:py-14`, matching the legacy 480px breakpoint.
+Custom utilities defined with `@utility`: **`shell`** is the page container (`width: min(1140px, 92%)`, centred — the legacy `.container`), **`rule-gold`** is the thin gold divider under section titles, **`text-gradient-gold`** is gold gradient text, and **`grid-fit-240/260/280/300`** are the auto-fit card grids. Section vertical rhythm is `py-14 sm:py-20`.
+
+Use `grid-fit-*` rather than writing `[grid-template-columns:repeat(auto-fit,minmax(280px,1fr))]` by hand. The bare form forces a 280px track even when the container is narrower than that, which pushed every card grid past the viewport on a 320px phone; `grid-fit-*` wraps the floor in `min(_, 100%)` so the track collapses instead.
 
 ### Motion
 
@@ -66,6 +68,10 @@ Two client components carry all of it, and both are opt-in per element rather th
 **React 19 lint rules ban `setState` in an effect body.** `react-hooks/set-state-in-effect` fails the build-adjacent lint. Two places work around it deliberately: `Header` closes the mobile sheet from the click handler on `<nav>` (with `stopPropagation` on the submenu toggle) instead of an effect keyed on `pathname`; `Counter` defers its reduced-motion assignment into a `requestAnimationFrame` callback. Don't "simplify" either back into a plain effect.
 
 **`agentRules: false` in `next.config.ts` is intentional.** Next 16 otherwise regenerates `AGENTS.md` and `CLAUDE.md` in the project root on every dev run, overwriting this file.
+
+**Mobile layout has three tripwires, all previously stepped on.** (1) `Button` hardcodes `inline-flex`, and Tailwind emits `inline-flex` after `hidden`, so passing `hidden md:inline-flex` through `className` does *nothing* — put visibility on a wrapper element instead. (2) The `--spacing-header` token is 68px on phones and 90px from `sm` up, so anything sizing against the header must use the token, never a literal. (3) The mobile nav sheet is `absolute top-full` inside the sticky header — it used to be `fixed` at a hardcoded offset that assumed the TopBar was still on screen, and detached from the header as soon as the page scrolled.
+
+The desktop nav needs ~410px of its own and switches on at `lg`, not `md`; at `md` it shared a 768px row with the logo lockup and the CTAs and forced the document to 1001px wide.
 
 **Images are all local.** Everything is in `public/images/`, shot by the agency — the legacy site hot-linked most of its photography from Unsplash. `public/logo/` holds the brand marks; `src/app/icon.png` and `apple-icon.png` are the favicons. No `remotePatterns` are configured, so a remote image source would need `next.config.ts` updated first.
 

@@ -24,7 +24,7 @@ export function PageHero({
   breadcrumbs,
 }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden border-b border-ink-border pt-28 pb-16">
+    <section className="relative overflow-hidden border-b border-ink-border pb-12 pt-16 sm:pb-16 sm:pt-28">
       <Image
         src={image}
         alt={imageAlt}
@@ -37,7 +37,7 @@ export function PageHero({
 
       <div className="shell relative z-[1] text-center">
         <Reveal>
-          <h1 className="mb-3 font-heading text-[clamp(2rem,4vw,3rem)] font-semibold text-cream">
+          <h1 className="mb-3 font-heading text-[clamp(1.65rem,6vw,3rem)] font-semibold text-cream">
             {title}
           </h1>
           <div className="flex flex-wrap items-center justify-center gap-2 text-sm text-muted">
@@ -47,7 +47,7 @@ export function PageHero({
                 {crumb.href ? (
                   <Link
                     href={crumb.href}
-                    className="text-muted transition-colors hover:text-gold"
+                    className="inline-flex min-h-10 items-center text-muted transition-colors hover:text-gold sm:min-h-0"
                   >
                     {crumb.label}
                   </Link>

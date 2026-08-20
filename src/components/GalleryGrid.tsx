@@ -50,7 +50,7 @@ export function GalleryGrid({ items }: { items: readonly GalleryItem[] }) {
 
   return (
     <>
-      <div className="grid gap-4 [grid-template-columns:repeat(auto-fit,minmax(260px,1fr))]">
+      <div className="grid-fit-260 grid gap-4">
         {items.map((item, index) => (
           <Reveal key={item.image} delay={(index % 3) * 110}>
             <button
@@ -65,7 +65,9 @@ export function GalleryGrid({ items }: { items: readonly GalleryItem[] }) {
                 sizes="(max-width: 640px) 100vw, (max-width: 1140px) 50vw, 360px"
                 className="object-cover transition-transform duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
               />
-              <span className="absolute inset-0 flex items-end bg-[linear-gradient(to_top,rgba(10,10,10,0.92),transparent_60%)] p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              {/* Hover is the only way this caption ever showed, so on touch
+                  devices it was unreachable. Show it by default there. */}
+              <span className="absolute inset-0 flex items-end bg-[linear-gradient(to_top,rgba(10,10,10,0.92),transparent_60%)] p-4 opacity-100 transition-opacity duration-300 group-hover:opacity-100 [@media(hover:hover)]:opacity-0">
                 <span className="text-sm font-semibold uppercase tracking-[0.14em] text-gold">
                   {item.caption}
                 </span>
@@ -81,13 +83,13 @@ export function GalleryGrid({ items }: { items: readonly GalleryItem[] }) {
           aria-modal="true"
           aria-label={active.caption}
           onClick={close}
-          className="fixed inset-0 z-[3000] flex items-center justify-center bg-[rgba(10,10,10,0.94)] p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[3000] flex items-center justify-center bg-[rgba(10,10,10,0.94)] px-14 py-16 backdrop-blur-sm sm:px-16 sm:py-8"
         >
           <button
             type="button"
             onClick={close}
             aria-label="Close"
-            className="absolute right-5 top-5 cursor-pointer text-4xl leading-none text-gold transition-colors hover:text-gold-light"
+            className="absolute right-3 top-3 flex size-12 cursor-pointer items-center justify-center text-4xl leading-none text-gold transition-colors hover:text-gold-light"
           >
             ×
           </button>
@@ -99,7 +101,7 @@ export function GalleryGrid({ items }: { items: readonly GalleryItem[] }) {
               event.stopPropagation();
               step(-1);
             }}
-            className="absolute left-4 cursor-pointer px-3 py-2 text-3xl text-gold transition-colors hover:text-gold-light"
+            className="absolute left-1 flex size-12 cursor-pointer items-center justify-center text-3xl text-gold transition-colors hover:text-gold-light sm:left-4"
           >
             ‹
           </button>
@@ -108,7 +110,7 @@ export function GalleryGrid({ items }: { items: readonly GalleryItem[] }) {
             onClick={(event) => event.stopPropagation()}
             className="max-h-full w-full max-w-4xl"
           >
-            <div className="relative mx-auto aspect-[4/3] w-full">
+            <div className="relative mx-auto aspect-[4/3] max-h-[70dvh] w-full">
               <Image
                 src={active.image}
                 alt={active.alt}
@@ -129,7 +131,7 @@ export function GalleryGrid({ items }: { items: readonly GalleryItem[] }) {
               event.stopPropagation();
               step(1);
             }}
-            className="absolute right-4 cursor-pointer px-3 py-2 text-3xl text-gold transition-colors hover:text-gold-light"
+            className="absolute right-1 flex size-12 cursor-pointer items-center justify-center text-3xl text-gold transition-colors hover:text-gold-light sm:right-4"
           >
             ›
           </button>

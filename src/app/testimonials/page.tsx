@@ -29,7 +29,7 @@ export default function TestimonialsPage() {
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Testimonials" }]}
       />
 
-      <section className="py-20 max-[480px]:py-14">
+      <section className="py-14 sm:py-20">
         <div className="shell">
           <SectionHeader
             label="Reviews & Feedback"
@@ -37,7 +37,7 @@ export default function TestimonialsPage() {
             description="Our clients' happiness is our greatest achievement. Here's what they have to say about their experience with Shiv Ram Event."
           />
 
-          <div className="grid gap-6 [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))]">
+          <div className="grid-fit-300 grid gap-6">
             {testimonials.map((testimonial, index) => (
               <Reveal key={testimonial.name} delay={index * 110}>
                 <TestimonialCard {...testimonial} />
