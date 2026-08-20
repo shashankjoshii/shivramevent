@@ -1,1 +1,76 @@
-@AGENTS.md
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project
+
+Marketing website for **Shiv Ram Event**, an event management company in Ahmedabad, India. Next.js 16 (App Router) + React 19 + TypeScript + Tailwind v4.
+
+This is a port of a hand-written static HTML site that lives in the sibling folder `../shiv ram`. That folder is the **design source of truth**: when a visual detail is ambiguous, read its `assets/css/style.css` rather than inventing one. Run it side by side for comparison with `powershell -ExecutionPolicy Bypass -File "../shiv ram/server.ps1"`, which serves the old site on :8080 while `next dev` runs on :3000.
+
+## Commands
+
+```bash
+npm run dev      # dev server on :3000
+npm run build    # production build; every route prerenders static
+npm run lint     # eslint (React 19 rules — see gotcha below)
+```
+
+There is no test suite.
+
+## Architecture
+
+**Content is data, not markup.** `src/lib/site.ts` holds every business constant (phone, email, WhatsApp, Instagram, maps, nav, footer links) — in the legacy site the phone number alone appeared ~100 times across ten files. `src/lib/content.ts` holds page content: the `services` array, testimonials, gallery items, team, featured events, form event types. Adding or editing a service means editing that array, not writing a page.
+
+**The four service detail pages are one route.** `src/app/services/[slug]/page.tsx` renders any entry in the `services` array via `generateStaticParams`, with per-service metadata from `metaTitle`/`metaDescription`. Each service object carries its own hero image, copy, feature list, and CTA text.
+
+**Shared chrome lives in `src/app/layout.tsx`** — TopBar, Header, Footer, WhatsAppFloat, ScrollUtilities wrap every page, replacing ten copy-pasted copies. `Header` is the only client component in the chrome; it derives the active nav state from `usePathname()` rather than a hand-set class.
+
+**Fonts** are Cinzel (headings) and Lato (body) via `next/font/google`, exposed as `--font-cinzel` / `--font-lato` on `<html>` and consumed by the `--font-heading` / `--font-body` theme tokens.
+
+### Styling
+
+Tailwind v4, configured CSS-first in `src/app/globals.css` — there is no `tailwind.config`. The `@theme` block defines the palette carried over from the legacy stylesheet:
+
+| Token | Value | Legacy name |
+| --- | --- | --- |
+| `--color-gold` | `#c5a059` | `--gold` |
+| `--color-gold-light` | `#d4af37` | `--gold-light` |
+| `--color-gold-dark` | `#9a7b3c` | `--gold-dark` |
+| `--color-ink` | `#0a0a0a` | `--black` |
+| `--color-ink-soft` | `#121212` | `--black-soft` |
+| `--color-ink-card` | `#1a1a1a` | `--black-card` |
+| `--color-ink-border` | `#2a2a2a` | `--black-border` |
+| `--color-cream` | `#f5f5f5` | `--text` |
+| `--color-muted` | `#a8a8a8` | `--text-muted` |
+
+Use the tokens (`text-gold`, `bg-ink-card`, `border-ink-border`) — never raw hex.
+
+Three custom utilities are defined with `@utility`: **`shell`** is the page container (`width: min(1140px, 92%)`, centred — the legacy `.container`), **`rule-gold`** is the thin gold divider under section titles, and **`text-gradient-gold`** is gold gradient text. Section vertical rhythm is `py-20 max-[480px]:py-14`, matching the legacy 480px breakpoint.
+
+### Motion
+
+Two client components carry all of it, and both are opt-in per element rather than applied by a global selector list the way the legacy script did:
+
+- **`Reveal`** (`src/components/ui/Reveal.tsx`) wraps content in `[data-reveal="up|left|right|scale"]`; the CSS in `globals.css` handles the transition and `.is-revealed` end state. One module-level `IntersectionObserver` is shared by every instance on the page. Pass `delay` for grid stagger and `as="li"` when the element sits inside a list.
+- **`Counter`** counts up once on scroll-in, easing out over 2s. Reduced motion and missing `IntersectionObserver` both short-circuit to the final value.
+
+`prefers-reduced-motion` is handled centrally at the bottom of `globals.css`.
+
+### The contact form has no backend
+
+`src/components/ContactForm.tsx` serializes its fields into a WhatsApp message and calls `window.open` on a `wa.me` link. That is deliberate — it is how the agency actually receives enquiries. There is no API route, no email service, no database anywhere in the project. If a real submission path is ever added, the WhatsApp hand-off should stay as the fallback.
+
+## Gotchas
+
+**React 19 lint rules ban `setState` in an effect body.** `react-hooks/set-state-in-effect` fails the build-adjacent lint. Two places work around it deliberately: `Header` closes the mobile sheet from the click handler on `<nav>` (with `stopPropagation` on the submenu toggle) instead of an effect keyed on `pathname`; `Counter` defers its reduced-motion assignment into a `requestAnimationFrame` callback. Don't "simplify" either back into a plain effect.
+
+**`agentRules: false` in `next.config.ts` is intentional.** Next 16 otherwise regenerates `AGENTS.md` and `CLAUDE.md` in the project root on every dev run, overwriting this file.
+
+**Images are all local.** Everything is in `public/images/`, shot by the agency — the legacy site hot-linked most of its photography from Unsplash. `public/logo/` holds the brand marks; `src/app/icon.png` and `apple-icon.png` are the favicons. No `remotePatterns` are configured, so a remote image source would need `next.config.ts` updated first.
+
+## Routes
+
+`/` · `/about` · `/services` · `/services/[slug]` (corporate-events, birthday-parties, cultural-events, decoration-services) · `/gallery` · `/testimonials` · `/contact`
+
+The legacy URLs were flat (`corporate-events.html`); service pages now nest under `/services/`. If the old site is already indexed, add redirects before going live.
