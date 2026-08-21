@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { TestimonialCard } from "@/components/cards";
 import { Stats } from "@/components/Stats";
 import { CtaBanner } from "@/components/ui/CtaBanner";
@@ -8,11 +9,12 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { testimonials } from "@/lib/content";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Testimonials",
   description:
     "Read what clients say about Shiv Ram Event — five-star reviews for engagement decor, themed birthday parties and event management in Ahmedabad.",
-};
+  path: "/testimonials",
+});
 
 const trustStats = [
   { value: "★★★★★", label: "5-Star Reviews" },

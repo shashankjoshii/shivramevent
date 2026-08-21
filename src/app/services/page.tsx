@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { CardGrid, EventCard, ServiceCard } from "@/components/cards";
 import { CtaBanner } from "@/components/ui/CtaBanner";
 import { PageHero } from "@/components/ui/PageHero";
@@ -7,11 +8,12 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { services, specialisedServices } from "@/lib/content";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Our Services",
   description:
     "Event management services in Ahmedabad — corporate events, birthday parties, cultural programs, wedding planning and premium decoration by Shiv Ram Event.",
-};
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return (

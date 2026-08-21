@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import { Stats } from "@/components/Stats";
 import { CtaBanner } from "@/components/ui/CtaBanner";
@@ -8,11 +9,12 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { team } from "@/lib/content";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About Us",
   description:
     "Learn about Shiv Ram Event — a professional event management company in Ahmedabad specializing in weddings, corporate events and decoration services.",
-};
+  path: "/about",
+});
 
 const aboutStats = [
   { value: 500, suffix: "+", label: "Events Organized" },

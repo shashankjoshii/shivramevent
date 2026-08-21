@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { GalleryGrid } from "@/components/GalleryGrid";
 import { CtaBanner } from "@/components/ui/CtaBanner";
 import { PageHero } from "@/components/ui/PageHero";
@@ -6,11 +7,12 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { gallery } from "@/lib/content";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Gallery",
   description:
     "Shiv Ram Event gallery — photos of past weddings, birthday parties, corporate events and decorations in Ahmedabad.",
-};
+  path: "/gallery",
+});
 
 export default function GalleryPage() {
   return (

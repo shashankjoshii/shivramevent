@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbSchema } from "@/lib/schema";
 import { Reveal } from "./Reveal";
 
 type Crumb = { label: string; href?: string };
@@ -25,6 +27,8 @@ export function PageHero({
 }: PageHeroProps) {
   return (
     <section className="relative overflow-hidden border-b border-ink-border pb-12 pt-16 sm:pb-16 sm:pt-28">
+      {/* Same crumbs the trail below renders, so the two cannot disagree. */}
+      <JsonLd data={breadcrumbSchema([...breadcrumbs])} />
       <Image
         src={image}
         alt={imageAlt}

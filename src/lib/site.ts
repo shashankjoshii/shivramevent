@@ -7,6 +7,15 @@
 const phoneDigits = "919099020289";
 
 export const site = {
+  /**
+   * Canonical origin. Everything absolute — canonicals, OG tags, the sitemap,
+   * JSON-LD @id values — derives from this, so pointing a custom domain at the
+   * site later is a one-line change (or a NEXT_PUBLIC_SITE_URL env var).
+   */
+  url: (
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://shivramevent.vercel.app"
+  ).replace(/\/$/, ""),
+
   name: "Shiv Ram Event",
   /** How the logo lockup spells the name — one word, as in the original. */
   wordmark: "Shivram Event",
@@ -17,6 +26,9 @@ export const site = {
   country: "India",
   address:
     "Ambica Apartment, Near Vaikunth Society, Ghodasar, Ahmedabad, Gujarat 380050",
+  /** The same address split up, for schema.org PostalAddress. */
+  street: "Ambica Apartment, Near Vaikunth Society, Ghodasar",
+  postalCode: "380050",
 
   phoneDisplay: "+91 9099020289",
   phoneShort: "9099020289",

@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { ContactForm } from "@/components/ContactForm";
 import { CtaBanner } from "@/components/ui/CtaBanner";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact Us",
   description:
     "Contact Shiv Ram Event in Ahmedabad for event planning and decoration — call, email or send an enquiry over WhatsApp.",
-};
+  path: "/contact",
+});
 
 const contactItems = [
   {

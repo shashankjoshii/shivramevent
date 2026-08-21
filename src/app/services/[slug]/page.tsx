@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { JsonLd } from "@/components/JsonLd";
 import { Button } from "@/components/ui/Button";
 import { CtaBanner } from "@/components/ui/CtaBanner";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
 import { getService, services } from "@/lib/content";
+import { serviceSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
 
 type Params = { params: Promise<{ slug: string }> };
@@ -25,6 +27,22 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     // "%s | Shiv Ram Event" template rather than double up the brand.
     title: { absolute: service.metaTitle },
     description: service.metaDescription,
+    alternates: { canonical: `/services/${service.slug}` },
+    openGraph: {
+      title: service.metaTitle,
+      description: service.metaDescription,
+      url: `/services/${service.slug}`,
+      siteName: site.name,
+      locale: "en_IN",
+      type: "website",
+      images: ["/opengraph-image"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: service.metaTitle,
+      description: service.metaDescription,
+      images: ["/opengraph-image"],
+    },
   };
 }
 
@@ -36,6 +54,7 @@ export default async function ServiceDetailPage({ params }: Params) {
 
   return (
     <>
+      <JsonLd data={serviceSchema(service.slug)} />
       <PageHero
         title={service.title}
         image={service.image}

@@ -85,6 +85,17 @@ The desktop nav needs ~410px of its own and switches on at `lg`, not `md`; at `m
 
 **Images are all local.** Everything is in `public/images/`, shot by the agency — the legacy site hot-linked most of its photography from Unsplash. `public/logo/` holds the brand marks; `src/app/icon.png` and `apple-icon.png` are the favicons. No `remotePatterns` are configured, so a remote image source would need `next.config.ts` updated first.
 
+### SEO and structured data
+
+`src/lib/site.ts` carries `url`, the canonical origin everything absolute derives from — canonicals, OG tags, the sitemap, JSON-LD `@id`s. It reads `NEXT_PUBLIC_SITE_URL` first, so pointing a custom domain at the site is an env var, not a find-and-replace.
+
+- **`src/lib/metadata.ts`** — `pageMetadata({ title, description, path })`. Every static page's `metadata` export goes through it. Use it rather than hand-writing an `openGraph` block: Next **replaces** rather than merges `openGraph` when a child segment declares one, so a page that sets `openGraph: { title, url }` silently drops the inherited `images` and ships with no social card.
+- **`src/lib/schema.ts`** — JSON-LD builders, rendered by `src/components/JsonLd.tsx` as a server component so the markup is in the static HTML (most structured-data crawlers do not run JS). `LocalBusiness` + `WebSite` come from the root layout on every route; `BreadcrumbList` is emitted by `PageHero` from the same crumbs it renders; `Service` comes from the service detail route.
+- **`src/app/robots.ts`** and **`src/app/sitemap.ts`** are metadata routes serving `/robots.txt` and `/sitemap.xml`. The sitemap is built from the `services` array, so a new service cannot leave it stale.
+- **`src/app/opengraph-image.tsx`** generates the 1200x630 card with `ImageResponse`. It is drawn rather than photographed because every event photo in `public/images` is portrait, and any of them would be cropped to a ribbon at that aspect ratio.
+
+Deliberately **not** in the schema: `geo`, `openingHours` and `priceRange` are not known and inventing them would put false claims in machine-readable form. `aggregateRating`/`Review` are omitted on purpose — review markup a business supplies about itself is self-serving under Google's policy and is ignored or penalised, so the on-page testimonials stay plain HTML.
+
 ## Routes
 
 `/` · `/about` · `/services` · `/services/[slug]` (corporate-events, birthday-parties, cultural-events, decoration-services) · `/gallery` · `/testimonials` · `/contact`
