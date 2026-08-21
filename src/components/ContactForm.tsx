@@ -6,7 +6,7 @@ import { eventTypes } from "@/lib/content";
 import { site, whatsappLink } from "@/lib/site";
 
 const fieldClasses =
-  "w-full rounded border border-ink-border bg-ink-soft px-4 py-3.5 text-[0.9375rem] text-cream transition-colors duration-300 outline-none placeholder:text-muted/70 focus:border-gold";
+  "w-full rounded border border-ink-border bg-ink-soft px-4 py-3.5 text-[0.9375rem] text-cream transition-colors duration-400 outline-none placeholder:text-muted/70 focus:border-gold";
 
 const labelClasses =
   "mb-2 block text-[0.8125rem] uppercase tracking-[0.06em] text-muted";

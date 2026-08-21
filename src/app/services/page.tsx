@@ -32,7 +32,7 @@ export default function ServicesPage() {
 
           <CardGrid>
             {services.map((service, index) => (
-              <Reveal key={service.slug} delay={index * 110}>
+              <Reveal key={service.slug} delay={index * 140}>
                 <EventCard
                   image={service.image}
                   alt={service.imageAlt}
@@ -55,7 +55,7 @@ export default function ServicesPage() {
 
           <CardGrid>
             {specialisedServices.map((service, index) => (
-              <Reveal key={service.title} delay={index * 110}>
+              <Reveal key={service.title} delay={index * 140}>
                 <ServiceCard
                   icon={service.icon}
                   title={service.title}

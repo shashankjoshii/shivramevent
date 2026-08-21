@@ -92,8 +92,8 @@ export default function AboutPage() {
 
           <div className="grid gap-6 lg:grid-cols-2">
             {missionVision.map((item, index) => (
-              <Reveal key={item.title} delay={index * 120}>
-                <div className="h-full rounded-lg border border-ink-border bg-ink-card p-6 transition-colors duration-300 hover:border-gold-dark sm:p-8">
+              <Reveal key={item.title} delay={index * 140}>
+                <div className="h-full rounded-lg border border-ink-border bg-ink-card p-6 transition-colors duration-400 hover:border-gold-dark sm:p-8">
                   <h3 className="mb-3 font-heading text-xl font-semibold text-gold-light">
                     {item.title}
                   </h3>
@@ -123,9 +123,9 @@ export default function AboutPage() {
 
           <div className="grid-fit-240 grid gap-6">
             {team.map((member, index) => (
-              <Reveal key={member.name} delay={index * 110}>
-                <div className="group h-full rounded-lg border border-ink-border bg-ink-card p-6 text-center sm:p-8 transition-[transform,border-color,box-shadow] duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:border-gold hover:shadow-[0_16px_36px_rgba(0,0,0,0.6)]">
-                  <div className="mx-auto mb-4 flex size-20 items-center justify-center rounded-full border border-gold-dark bg-[rgba(197,160,89,0.08)] font-heading text-xl font-semibold text-gold transition-transform duration-[400ms] group-hover:scale-110">
+              <Reveal key={member.name} delay={index * 140}>
+                <div className="group h-full rounded-lg border border-ink-border bg-ink-card p-6 text-center sm:p-8 transition-[transform,border-color,box-shadow] duration-[500ms] ease-soft hover:-translate-y-2 hover:border-gold hover:shadow-[0_16px_36px_rgba(0,0,0,0.6)]">
+                  <div className="mx-auto mb-4 flex size-20 items-center justify-center rounded-full border border-gold-dark bg-[rgba(197,160,89,0.08)] font-heading text-xl font-semibold text-gold transition-transform duration-[500ms] group-hover:scale-110">
                     {member.initials}
                   </div>
                   <h3 className="font-heading text-lg font-semibold text-cream">

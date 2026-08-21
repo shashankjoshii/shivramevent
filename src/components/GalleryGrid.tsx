@@ -52,22 +52,22 @@ export function GalleryGrid({ items }: { items: readonly GalleryItem[] }) {
     <>
       <div className="grid-fit-260 grid gap-4">
         {items.map((item, index) => (
-          <Reveal key={item.image} delay={(index % 3) * 110}>
+          <Reveal key={item.image} delay={(index % 3) * 140}>
             <button
               type="button"
               onClick={() => setOpenIndex(index)}
-              className="group relative block aspect-[4/3] w-full cursor-pointer overflow-hidden rounded-lg border border-ink-border transition-[transform,border-color,box-shadow] duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:border-gold hover:shadow-[0_16px_36px_rgba(0,0,0,0.6),0_0_25px_rgba(197,160,89,0.22)]"
+              className="group relative block aspect-[4/3] w-full cursor-pointer overflow-hidden rounded-lg border border-ink-border transition-[transform,border-color,box-shadow] duration-[500ms] ease-soft hover:-translate-y-1.5 hover:border-gold hover:shadow-[0_16px_36px_rgba(0,0,0,0.6),0_0_25px_rgba(197,160,89,0.22)]"
             >
               <Image
                 src={item.image}
                 alt={item.alt}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1140px) 50vw, 360px"
-                className="object-cover transition-transform duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
+                className="object-cover transition-transform duration-[1100ms] ease-soft group-hover:scale-110"
               />
               {/* Hover is the only way this caption ever showed, so on touch
                   devices it was unreachable. Show it by default there. */}
-              <span className="absolute inset-0 flex items-end bg-[linear-gradient(to_top,rgba(10,10,10,0.92),transparent_60%)] p-4 opacity-100 transition-opacity duration-300 group-hover:opacity-100 [@media(hover:hover)]:opacity-0">
+              <span className="absolute inset-0 flex items-end bg-[linear-gradient(to_top,rgba(10,10,10,0.92),transparent_60%)] p-4 opacity-100 transition-opacity duration-400 group-hover:opacity-100 [@media(hover:hover)]:opacity-0">
                 <span className="text-sm font-semibold uppercase tracking-[0.14em] text-gold">
                   {item.caption}
                 </span>

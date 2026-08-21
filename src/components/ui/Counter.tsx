@@ -10,7 +10,7 @@ type CounterProps = {
   className?: string;
 };
 
-const DURATION = 2000;
+const DURATION = 2600;
 
 /**
  * Counts from zero to `value` the first time it scrolls into view, easing out
@@ -40,7 +40,9 @@ export function Counter({ value, suffix = "", className }: CounterProps) {
     const step = (timestamp: number) => {
       start ??= timestamp;
       const progress = Math.min((timestamp - start) / DURATION, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
+      // Quadratic rather than cubic ease-out: the cubic tail crawled through
+      // its last digits for most of a second, which read as a stall.
+      const eased = 1 - Math.pow(1 - progress, 2);
 
       setDisplay(Math.floor(eased * value));
 

@@ -4,7 +4,7 @@ import type { ComponentPropsWithoutRef, ReactNode } from "react";
 type Variant = "gold" | "outline";
 
 const base =
-  "relative z-[1] inline-flex cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-[4px] px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.08em] leading-none transition-[transform,box-shadow,background,color] duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] active:translate-y-[-1px] active:scale-[0.99]";
+  "relative z-[1] inline-flex cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-[4px] px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.08em] leading-none transition-[transform,box-shadow,background,color] duration-[500ms] ease-soft active:translate-y-[-1px] active:scale-[0.99]";
 
 const variants: Record<Variant, string> = {
   /* Gold fill with a light sweep that crosses the button on hover. */
@@ -15,7 +15,7 @@ const variants: Record<Variant, string> = {
     "hover:shadow-[0_10px_30px_rgba(212,175,55,0.45),0_0_20px_rgba(197,160,89,0.35)]",
     "before:absolute before:inset-y-0 before:left-[-100%] before:z-[1] before:w-full",
     "before:bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.35),transparent)]",
-    "before:transition-[left] before:duration-[750ms] before:ease-[cubic-bezier(0.16,1,0.3,1)]",
+    "before:transition-[left] before:duration-[900ms] before:ease-glide",
     "hover:before:left-full",
   ].join(" "),
 
@@ -27,7 +27,7 @@ const variants: Record<Variant, string> = {
     "hover:shadow-[0_8px_24px_rgba(197,160,89,0.35),0_0_15px_rgba(212,175,55,0.25)]",
     "before:absolute before:inset-0 before:z-[-1] before:origin-right before:scale-x-0",
     "before:bg-[linear-gradient(135deg,var(--color-gold-dark),var(--color-gold))]",
-    "before:transition-transform before:duration-[400ms] before:ease-[cubic-bezier(0.16,1,0.3,1)]",
+    "before:transition-transform before:duration-[500ms] before:ease-soft",
     "hover:before:origin-left hover:before:scale-x-100",
   ].join(" "),
 };

@@ -52,7 +52,7 @@ export function ScrollUtilities() {
         type="button"
         aria-label="Back to top"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className={`fixed bottom-24 right-6 z-[900] flex size-11 cursor-pointer items-center justify-center rounded-full border border-gold bg-ink-card text-lg text-gold transition-all duration-300 hover:bg-gold hover:text-ink ${
+        className={`fixed bottom-24 right-6 z-[900] flex size-11 cursor-pointer items-center justify-center rounded-full border border-gold bg-ink-card text-lg text-gold transition-all duration-400 hover:bg-gold hover:text-ink ${
           showTop
             ? "visible translate-y-0 opacity-100"
             : "invisible translate-y-3 opacity-0"

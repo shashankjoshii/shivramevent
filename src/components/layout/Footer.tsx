@@ -60,7 +60,7 @@ export function Footer() {
                 {...(social.external
                   ? { target: "_blank", rel: "noopener" }
                   : {})}
-                className="flex size-10 items-center justify-center rounded-full border border-ink-border bg-ink-card text-sm font-semibold text-gold transition-all duration-300 hover:-translate-y-0.5 hover:border-gold hover:bg-gold hover:text-ink"
+                className="flex size-10 items-center justify-center rounded-full border border-ink-border bg-ink-card text-sm font-semibold text-gold transition-all duration-400 hover:-translate-y-0.5 hover:border-gold hover:bg-gold hover:text-ink"
               >
                 {social.label}
               </a>

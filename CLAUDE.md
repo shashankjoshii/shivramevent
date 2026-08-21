@@ -55,7 +55,17 @@ Use `grid-fit-*` rather than writing `[grid-template-columns:repeat(auto-fit,min
 Two client components carry all of it, and both are opt-in per element rather than applied by a global selector list the way the legacy script did:
 
 - **`Reveal`** (`src/components/ui/Reveal.tsx`) wraps content in `[data-reveal="up|left|right|scale"]`; the CSS in `globals.css` handles the transition and `.is-revealed` end state. One module-level `IntersectionObserver` is shared by every instance on the page. Pass `delay` for grid stagger and `as="li"` when the element sits inside a list.
-- **`Counter`** counts up once on scroll-in, easing out over 2s. Reduced motion and missing `IntersectionObserver` both short-circuit to the final value.
+- **`Counter`** counts up once on scroll-in, easing out over 2.6s. Reduced motion and missing `IntersectionObserver` both short-circuit to the final value.
+
+**Timing is tokenised** — tune motion in the `@theme` block, not in component class strings:
+
+| Token | Value | Used for |
+| --- | --- | --- |
+| `--ease-glide` | `cubic-bezier(0.33, 1, 0.68, 1)` | one-way motion — the scroll reveal, the button's gold sweep |
+| `--ease-soft` | `cubic-bezier(0.4, 0, 0.2, 1)` | anything reversible — every hover and toggle |
+| `--default-transition-duration` | `300ms` | the ~20 bare `transition-colors` link hovers |
+
+Reach for `ease-soft` on hover states specifically: a hover plays backwards when the pointer leaves, and the one-way `easeOutExpo` this codebase used to apply everywhere looked fine going in and abrupt coming out. The rough scale is 300ms for colour-only hovers, 500–550ms for transform/shadow hovers, 1000ms for the scroll reveal, 1100ms for image zooms, and a 140ms stagger between siblings in a grid.
 
 `prefers-reduced-motion` is handled centrally at the bottom of `globals.css`.
 

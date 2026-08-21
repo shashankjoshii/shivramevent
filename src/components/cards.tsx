@@ -26,20 +26,20 @@ export function ServiceCard({
   linkLabel = "View Details",
 }: ServiceCardProps) {
   return (
-    <article className="group relative z-[1] overflow-hidden rounded-lg border border-ink-border bg-ink-card px-5 py-8 text-center sm:px-6 sm:py-10 transition-[transform,border-color,box-shadow] duration-[450ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2.5 hover:scale-[1.03] hover:border-gold hover:shadow-[0_20px_40px_rgba(0,0,0,0.7),0_0_30px_rgba(197,160,89,0.28)] before:absolute before:inset-x-0 before:top-0 before:h-[3px] before:scale-x-0 before:bg-[linear-gradient(90deg,transparent,var(--color-gold),transparent)] before:transition-transform before:duration-[450ms] before:ease-[cubic-bezier(0.16,1,0.3,1)] before:content-[''] hover:before:scale-x-100">
+    <article className="group relative z-[1] overflow-hidden rounded-lg border border-ink-border bg-ink-card px-5 py-8 text-center sm:px-6 sm:py-10 transition-[transform,border-color,box-shadow] duration-[550ms] ease-soft hover:-translate-y-2.5 hover:scale-[1.03] hover:border-gold hover:shadow-[0_20px_40px_rgba(0,0,0,0.7),0_0_30px_rgba(197,160,89,0.28)] before:absolute before:inset-x-0 before:top-0 before:h-[3px] before:scale-x-0 before:bg-[linear-gradient(90deg,transparent,var(--color-gold),transparent)] before:transition-transform before:duration-[550ms] before:ease-soft before:content-[''] hover:before:scale-x-100">
       {number ? (
-        <div className="mb-2 font-heading text-[2.5rem] text-gold-dark opacity-60 transition-all duration-[400ms] group-hover:scale-110 group-hover:text-gold-light group-hover:opacity-100">
+        <div className="mb-2 font-heading text-[2.5rem] text-gold-dark opacity-60 transition-all duration-[500ms] group-hover:scale-110 group-hover:text-gold-light group-hover:opacity-100">
           {number}
         </div>
       ) : null}
 
       {icon ? (
-        <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-full border border-gold-dark text-2xl text-gold transition-[transform,background,border-color,box-shadow] duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:rotate-[8deg] group-hover:scale-110 group-hover:border-gold-light group-hover:bg-[rgba(197,160,89,0.15)] group-hover:shadow-[0_0_15px_rgba(212,175,55,0.4)]">
+        <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-full border border-gold-dark text-2xl text-gold transition-[transform,background,border-color,box-shadow] duration-[500ms] ease-soft group-hover:rotate-[8deg] group-hover:scale-110 group-hover:border-gold-light group-hover:bg-[rgba(197,160,89,0.15)] group-hover:shadow-[0_0_15px_rgba(212,175,55,0.4)]">
           {icon}
         </div>
       ) : null}
 
-      <h3 className="mb-3 font-heading text-lg font-semibold text-cream transition-colors duration-300 group-hover:text-gold-light">
+      <h3 className="mb-3 font-heading text-lg font-semibold text-cream transition-colors duration-400 group-hover:text-gold-light">
         {title}
       </h3>
       <p className="text-[0.9375rem] text-muted">{text}</p>
@@ -83,7 +83,7 @@ export function EventCard({
   priority = false,
 }: EventCardProps) {
   return (
-    <article className="group relative overflow-hidden rounded-lg border border-ink-border bg-ink-card transition-[transform,border-color,box-shadow] duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:scale-[1.02] hover:border-gold hover:shadow-[0_16px_36px_rgba(0,0,0,0.6),0_0_25px_rgba(197,160,89,0.25)]">
+    <article className="group relative overflow-hidden rounded-lg border border-ink-border bg-ink-card transition-[transform,border-color,box-shadow] duration-[500ms] ease-soft hover:-translate-y-2 hover:scale-[1.02] hover:border-gold hover:shadow-[0_16px_36px_rgba(0,0,0,0.6),0_0_25px_rgba(197,160,89,0.25)]">
       <div className="relative h-[190px] overflow-hidden sm:h-[220px]">
         <Image
           src={image}
@@ -91,12 +91,12 @@ export function EventCard({
           fill
           priority={priority}
           sizes="(max-width: 768px) 100vw, (max-width: 1140px) 50vw, 360px"
-          className="object-cover transition-[transform,filter] duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110 group-hover:rotate-[0.5deg] group-hover:brightness-110"
+          className="object-cover transition-[transform,filter] duration-[1100ms] ease-soft group-hover:scale-110 group-hover:rotate-[0.5deg] group-hover:brightness-110"
         />
       </div>
 
       <div className="p-5 sm:p-6">
-        <h3 className="mb-3 font-heading text-xl font-semibold text-gold-light transition-colors duration-300 group-hover:text-gold">
+        <h3 className="mb-3 font-heading text-xl font-semibold text-gold-light transition-colors duration-400 group-hover:text-gold">
           {title}
         </h3>
         <p className="text-[0.9375rem] text-muted">{text}</p>
@@ -138,7 +138,7 @@ export function TestimonialCard({
   initial,
 }: TestimonialCardProps) {
   return (
-    <figure className="relative h-full rounded-lg border border-ink-border bg-ink-card p-6 sm:p-8 transition-[transform,border-color,box-shadow] duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:border-gold-dark hover:shadow-[0_14px_32px_rgba(0,0,0,0.5)] before:absolute before:left-6 before:top-4 before:font-heading before:text-[4rem] before:leading-none before:text-gold-dark before:opacity-30 before:content-['\201C']">
+    <figure className="relative h-full rounded-lg border border-ink-border bg-ink-card p-6 sm:p-8 transition-[transform,border-color,box-shadow] duration-[500ms] ease-soft hover:-translate-y-1.5 hover:border-gold-dark hover:shadow-[0_14px_32px_rgba(0,0,0,0.5)] before:absolute before:left-6 before:top-4 before:font-heading before:text-[4rem] before:leading-none before:text-gold-dark before:opacity-30 before:content-['\201C']">
       <div className="mb-3 tracking-[2px] text-gold" aria-label="5 out of 5 stars">
         ★★★★★
       </div>

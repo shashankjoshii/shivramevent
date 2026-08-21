@@ -73,7 +73,7 @@ export function Header() {
         <nav
           id="main-nav"
           onClick={closeMenu}
-          className={`max-lg:absolute max-lg:inset-x-0 max-lg:top-full max-lg:max-h-[calc(100dvh-var(--spacing-header))] max-lg:overflow-y-auto max-lg:overscroll-contain max-lg:border-b max-lg:border-ink-border max-lg:bg-ink max-lg:p-4 max-lg:shadow-[0_18px_36px_rgba(0,0,0,0.55)] max-lg:transition-all max-lg:duration-300 ${
+          className={`max-lg:absolute max-lg:inset-x-0 max-lg:top-full max-lg:max-h-[calc(100dvh-var(--spacing-header))] max-lg:overflow-y-auto max-lg:overscroll-contain max-lg:border-b max-lg:border-ink-border max-lg:bg-ink max-lg:p-4 max-lg:shadow-[0_18px_36px_rgba(0,0,0,0.55)] max-lg:transition-all max-lg:duration-400 ${
             menuOpen
               ? "max-lg:visible max-lg:translate-y-0 max-lg:opacity-100"
               : "max-lg:invisible max-lg:-translate-y-[120%] max-lg:opacity-0"
@@ -108,7 +108,7 @@ export function Header() {
                   </div>
 
                   <ul
-                    className={`min-w-[210px] max-lg:bg-ink-soft lg:invisible lg:absolute lg:left-0 lg:top-[calc(100%+0.5rem)] lg:z-[100] lg:translate-y-[6px] lg:rounded-md lg:border lg:border-ink-border lg:bg-ink-card lg:py-2 lg:opacity-0 lg:shadow-[0_8px_24px_rgba(0,0,0,0.4)] lg:transition-all lg:duration-300 lg:group-hover:visible lg:group-hover:translate-y-0 lg:group-hover:opacity-100 ${
+                    className={`min-w-[210px] max-lg:bg-ink-soft lg:invisible lg:absolute lg:left-0 lg:top-[calc(100%+0.5rem)] lg:z-[100] lg:translate-y-[6px] lg:rounded-md lg:border lg:border-ink-border lg:bg-ink-card lg:py-2 lg:opacity-0 lg:shadow-[0_8px_24px_rgba(0,0,0,0.4)] lg:transition-all lg:duration-400 lg:group-hover:visible lg:group-hover:translate-y-0 lg:group-hover:opacity-100 ${
                       servicesOpen ? "max-lg:block" : "max-lg:hidden"
                     }`}
                   >
@@ -180,17 +180,17 @@ export function Header() {
             className="flex size-11 shrink-0 cursor-pointer flex-col items-center justify-center gap-[5px] lg:hidden"
           >
             <span
-              className={`block h-0.5 w-6 bg-gold transition-transform duration-300 ${
+              className={`block h-0.5 w-6 bg-gold transition-transform duration-400 ${
                 menuOpen ? "translate-y-[7px] rotate-45" : ""
               }`}
             />
             <span
-              className={`block h-0.5 w-6 bg-gold transition-opacity duration-300 ${
+              className={`block h-0.5 w-6 bg-gold transition-opacity duration-400 ${
                 menuOpen ? "opacity-0" : ""
               }`}
             />
             <span
-              className={`block h-0.5 w-6 bg-gold transition-transform duration-300 ${
+              className={`block h-0.5 w-6 bg-gold transition-transform duration-400 ${
                 menuOpen ? "-translate-y-[7px] -rotate-45" : ""
               }`}
             />

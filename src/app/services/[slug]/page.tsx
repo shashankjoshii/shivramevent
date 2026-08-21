@@ -84,8 +84,8 @@ export default async function ServiceDetailPage({ params }: Params) {
               <Reveal
                 as="li"
                 key={feature.title}
-                delay={index * 90}
-                className="h-full rounded border border-ink-border border-l-[3px] border-l-gold bg-ink-card p-5 text-[0.9375rem] text-muted transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(0,0,0,0.5)]"
+                delay={index * 120}
+                className="h-full rounded border border-ink-border border-l-[3px] border-l-gold bg-ink-card p-5 text-[0.9375rem] text-muted transition-[transform,box-shadow] duration-400 hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(0,0,0,0.5)]"
               >
                 <strong className="mb-1.5 block font-heading text-[0.9375rem] font-semibold text-gold-light">
                   {feature.title}

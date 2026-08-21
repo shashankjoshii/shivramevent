@@ -67,7 +67,7 @@ export default function HomePage() {
 
           <CardGrid>
             {services.map((service, index) => (
-              <Reveal key={service.slug} delay={index * 110}>
+              <Reveal key={service.slug} delay={index * 140}>
                 <ServiceCard
                   number={String(index + 1).padStart(2, "0")}
                   title={service.title}
@@ -95,7 +95,7 @@ export default function HomePage() {
 
           <CardGrid>
             {featuredEvents.map((event, index) => (
-              <Reveal key={event.title} delay={index * 110}>
+              <Reveal key={event.title} delay={index * 140}>
                 <EventCard
                   image={event.image}
                   alt={event.alt}
@@ -152,7 +152,7 @@ export default function HomePage() {
 
           <div className="grid-fit-300 grid gap-6">
             {testimonials.map((testimonial, index) => (
-              <Reveal key={testimonial.name} delay={index * 110}>
+              <Reveal key={testimonial.name} delay={index * 140}>
                 <TestimonialCard {...testimonial} />
               </Reveal>
             ))}

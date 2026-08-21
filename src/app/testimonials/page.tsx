@@ -39,7 +39,7 @@ export default function TestimonialsPage() {
 
           <div className="grid-fit-300 grid gap-6">
             {testimonials.map((testimonial, index) => (
-              <Reveal key={testimonial.name} delay={index * 110}>
+              <Reveal key={testimonial.name} delay={index * 140}>
                 <TestimonialCard {...testimonial} />
               </Reveal>
             ))}

@@ -23,6 +23,28 @@
   --shadow-gold-lg: 0 18px 44px rgb(197 160 89 / 0.22);
 
   --spacing-header: 90px;
+
+  /*
+   * Motion. The site previously eased almost everything on easeOutExpo
+   * (0.16, 1, 0.3, 1), which leaves at very high velocity and then crawls —
+   * it reads as a snap however long the duration is.
+   *
+   * `glide` (easeOutCubic) is for one-way motion — the scroll reveal and the
+   * button's gold sweep. `soft` is a symmetric ease-in-out for anything
+   * reversible: a hover runs backwards when the pointer leaves, and a
+   * one-way curve played in reverse is what made hover-off feel abrupt.
+   */
+  --ease-glide: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /*
+   * ~20 link hovers across the nav, footer and TopBar use a bare
+   * `transition-colors` and so inherit this. Tailwind ships 150ms, which is
+   * the snappiest motion on the site and sits on exactly the elements a
+   * visitor touches most. Raising the default covers them all without
+   * pinning a duration onto every one.
+   */
+  --default-transition-duration: 300ms;
 }
 
 /* The header is a lot of vertical real estate on a phone. Shrink the token
@@ -151,8 +173,8 @@
 [data-reveal] {
   opacity: 0;
   transition:
-    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 1s var(--ease-glide),
+    transform 1s var(--ease-glide);
   will-change: opacity, transform;
 }
 
