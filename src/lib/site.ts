@@ -15,7 +15,8 @@ export const site = {
   city: "Ahmedabad",
   region: "Gujarat",
   country: "India",
-  address: "Ahmedabad, Gujarat, India",
+  address:
+    "Ambica Apartment, Near Vaikunth Society, Ghodasar, Ahmedabad, Gujarat 380050",
 
   phoneDisplay: "+91 9099020289",
   phoneShort: "9099020289",
@@ -24,13 +25,14 @@ export const site = {
   email: "shivramevent@gmail.com",
   emailHref: "mailto:shivramevent@gmail.com",
 
-  instagramHandle: "@shivramevent",
-  instagramUrl: "https://www.instagram.com/shivramevent/",
+  instagramHandle: "@shivrameventplanerahmedabad",
+  instagramUrl: "https://www.instagram.com/shivrameventplanerahmedabad/",
 
   whatsappUrl: `https://wa.me/${phoneDigits}`,
   mapsUrl: "https://share.google/EWRIKSIM85E7sP4Nf",
+  // Kept in step with `address` — the embed pins whatever this query resolves to.
   mapsEmbedUrl:
-    "https://maps.google.com/maps?q=Ahmedabad,Gujarat,India&output=embed",
+    "https://maps.google.com/maps?q=Ambica+Apartment,+Vaikunth+Society,+Ghodasar,+Ahmedabad,+Gujarat+380050&output=embed",
 
   description:
     "Professional event management company in Ahmedabad — weddings, corporate events, parties & decoration services.",
