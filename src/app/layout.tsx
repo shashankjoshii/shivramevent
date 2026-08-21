@@ -64,6 +64,15 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
+  /*
+   * Google Search Console ownership proof. Next renders this as
+   * <meta name="google-site-verification">. Keep it even after the property
+   * verifies — Google rechecks periodically and removing it can unverify the
+   * property, which silently cuts off the indexing and query reports.
+   */
+  verification: {
+    google: "3BSm9vs8oiuxhSJ8Ec2WC2_bqS3kZgcB1BP2szD4svM",
+  },
 };
 
 export default function RootLayout({
